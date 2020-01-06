@@ -27,8 +27,8 @@ mkdir -p /etc/chef
 
 # Uncomment the following lines if you are using a self-hosted version of chef. Set IP_ADDRESS equal to that of the Ip of the self hosted chef server
 
-# echo 'IP_ADDRESS       chef-server' >> /etc/hosts
- 
+# sudo echo 'IP_ADDRESS       chef-server' >> /etc/hosts
+
 # Self curling command, raspberry pi chef gem does not install chef-client by default
 sudo curl https://raw.githubusercontent.com/edrapac/chef_pihole/master/chef-client -o /usr/local/bin/chef-client
 sudo chmod +x /usr/local/bin/chef-client

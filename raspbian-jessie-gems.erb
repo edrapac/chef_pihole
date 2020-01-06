@@ -23,7 +23,7 @@ gem install ohai --no-rdoc --no-ri --verbose
 gem install chef --no-rdoc --no-ri --verbose
 # Add Chef configurations
 mkdir -p /etc/chef
-sudo curl https://raw.githubusercontent.com/chef/chef/master/chef-bin/bin/chef-client -o /usr/local/bin/chef-client
+sudo curl https://raw.githubusercontent.com/edrapac/chef_pihole/master/chef-client -o /usr/local/bin/chef-client
 sudo chmod +x /usr/local/bin/chef-client
 <% if client_pem -%>
     cat > /etc/chef/client.pem <<EOP

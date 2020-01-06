@@ -21,10 +21,18 @@ gem install net-ssh-gateway --no-rdoc --no-ri --verbose
 gem install net-ssh --no-rdoc --no-ri --verbose
 gem install ohai --no-rdoc --no-ri --verbose
 gem install chef --no-rdoc --no-ri --verbose
+
 # Add Chef configurations
 mkdir -p /etc/chef
+
+# Uncomment the following lines if you are using a self-hosted version of chef. Set IP_ADDRESS equal to that of the Ip of the self hosted chef server
+
+# echo 'IP_ADDRESS       chef-server' >> /etc/hosts
+ 
+# Self curling command, raspberry pi chef gem does not install chef-client by default
 sudo curl https://raw.githubusercontent.com/edrapac/chef_pihole/master/chef-client -o /usr/local/bin/chef-client
 sudo chmod +x /usr/local/bin/chef-client
+
 <% if client_pem -%>
     cat > /etc/chef/client.pem <<EOP
 <%= ::File.read(::File.expand_path(client_pem)) %>

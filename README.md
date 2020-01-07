@@ -17,7 +17,7 @@ TODO Add Summary
 * Install PiHole Docker 
 
 ### Usage
-![Workstation-Server-Node](https://github.com/edrapac/chef_pihole/img/workstation-server-node.png)
+![Workstation-Server-Node](img/workstation-server-node.png)
 
 The above configuration is how we will start out, with your local development environment as the workstation, a cloud hosted instance of Chef as the server and the RaspberryPi as the node.
 

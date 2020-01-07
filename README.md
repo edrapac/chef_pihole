@@ -25,4 +25,3 @@ To get started, you will need a <b>Linux/Unix</b> dev env that is supported by C
 
 <b>A note about VMs:</b> If you choose to have your workstation as a VM, to make the process as simple as possible when configuring networking settings, have the VM in a bridged adapter mode. The VM will then be seen as a logical host on your network with an IP address independent of your physical machine
 
-

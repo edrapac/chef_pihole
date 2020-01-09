@@ -38,3 +38,13 @@ bash 'start_pihole' do
     sudo docker-compose -f docker-compose.yml up -d && sudo docker logs pihole | grep random
     EOH
 end
+
+# Optional, you can comment out the code below this line
+# Set bash profile to cool ParrotOS theme
+bash 'modify_bashrc' do
+	code <<-EOH
+	  sudo cp ~/.bashrc ~/.bashrc.bak
+	  sudo curl https://gist.githubusercontent.com/rickdaalhuizen90/d1df7f6042494b982db559efc01d9557/raw/488d28c1b614617025b6dc9d8da1075eedb892d4/.bashrc > ~/.bashrc
+	  sudo source ~/.bashrc
+	  EOH
+end

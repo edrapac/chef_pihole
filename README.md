@@ -5,7 +5,9 @@
 ##### This repo is meant for a rapid provisioning of a RaspberryPi and PiHole DNS
 
 ### Summary of services installed
+This repo installs all of the packages required to run Chef on a RaspberryPi as well as all the requirements to run Docker containers on ARM architecture. Additonally, the last bash resource in the [dockerPiHole recipe](https://github.com/edrapac/chef_pihole/blob/master/dockerPiHole/recipes/default.rb#L42-L50) will install a parrotOS bash theme which although totally optional is also totally rad.
 
+![parrotOSbashtheme](https://user-images.githubusercontent.com/25995328/41517302-7ce46512-727f-11e8-9a98-fb9b0e77e905.png)
 
 ### Dependencies
 * A running Chef Server or cloud Chef Server instance

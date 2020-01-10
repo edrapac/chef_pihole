@@ -70,5 +70,5 @@ For now this is all we need to do with the chef server, we will revisit it soon 
 #### Bootstrap your RaspberryPi!
 1. Finally, run the following command to bootstrap chef-client onto your RaspberryPi and run the recipe
 ```
-knife bootstrap PI_IP_ADDRESS -t raspbian-jessie-chef.erb --ssh-user pi --ssh-password 'raspberry' --sudo --use-sudo-password --node-name 'NODE_NAME' --run-list 'recipe[dockerPiHole]'
+knife bootstrap PI_IP_ADDRESS -t raspbian-jessie-gems.erb --ssh-user pi --ssh-password 'raspberry' --sudo --use-sudo-password --node-name 'NODE_NAME' --run-list 'recipe[dockerPiHole]'
 ```

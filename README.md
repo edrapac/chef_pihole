@@ -26,6 +26,7 @@ For sake of simplicity this we will set up a hosted chef-server instance.
 1. Navigate to https://manage.chef.io/signup/
 2. Create a new account and sign up for a free hosted version of chef-server (free up to 5 nodes)
 3. Create an orginization https://manage.chef.io/
+4. <b>MAKE SURE TO SAVE YOUR PRIVATE KEY THAT WAS JUST CREATED SOMEWHERE SECURE AND EASILY ACCESSIBLE YOU WILL NEED IT</b>
 
 For now this is all we need to do with the chef server, we will revisit it soon though.
 
@@ -33,7 +34,41 @@ For now this is all we need to do with the chef server, we will revisit it soon 
 1. Install Chef (and most importantly knife) on your workstation. The commands for this vary 
 
     <b>macOS</b>
+    
     `brew cask install chef/chef/chef-workstation`
 
     <b>Ubuntu/Debian</b>
+    
+    `apt-get install chef`
 
+2. Install the ChefDk
+
+    <b>macOS</b>
+
+    Follow this guide: https://docs.chef.io/install_dk.html
+
+    <b>Ubuntu/Debian</b>
+
+    ```
+    wget https://packages.chef.io/files/stable/chefdk/3.2.30/ubuntu/18.04/chefdk_3.2.30-1_amd64.deb
+
+    dpkg -i chefdk_3.2.30-1_amd64.deb
+    ```
+
+#### Download your configs from your Chef Server 
+1. Log back into your chef server https://manage.chef.io/
+2. Go to the Administration tab, selection your new organization and click Generate Knife Config
+3. Save knife.rb to ~/.chef on your Workstation
+4. Save your private key you created when you registered the org also to the ~/.chef directory on your Workstation
+5. Perform a quick test that your Workstation can communicate with your Chef server by running `knife ssl check`
+
+#### Copy the dockerPiHole cookbook here to your cookbook dir
+1. By default, the `knife.rb` file you downloaded will have set your cookbook path to `~/cookbooks` if that directory does not exist, create it now via `mkdir cookbooks` in your home dir
+2. Now run `mv dockerPiHole/ ~/cookbooks/`
+3. Now run `knife cookbook upload dockerPihole`
+
+#### Bootstrap your RaspberryPi!
+1. Finally, run the following command to bootstrap chef-client onto your RaspberryPi and run the recipe
+```
+knife bootstrap PI_IP_ADDRESS -t raspbian-jessie-chef.erb --ssh-user pi --ssh-password 'raspberry' --sudo --use-sudo-password --node-name 'NODE_NAME' --run-list 'recipe[dockerPiHole]'
+```

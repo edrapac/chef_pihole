@@ -23,8 +23,8 @@ gem install ohai --no-rdoc --no-ri --verbose
 gem install chef --no-rdoc --no-ri --verbose
 # Add Chef configurations
 mkdir -p /etc/chef
-sudo curl https://raw.githubusercontent.com/edrapac/chef_pihole/master/chef-client -o /usr/local/bin/chef-client
-sudo chmod +x /usr/local/bin/chef-client
+curl https://raw.githubusercontent.com/edrapac/chef_pihole/master/chef-client -o /usr/local/bin/chef-client
+chmod +x /usr/local/bin/chef-client
 <% if client_pem -%>
     cat > /etc/chef/client.pem <<EOP
 <%= ::File.read(::File.expand_path(client_pem)) %>
@@ -64,6 +64,7 @@ EOP
 
 cat > /etc/chef/client.rb <<EOP
 <%= config_content %>
+chef_license "accept"
 EOP
 
 cat > /etc/chef/first-boot.json <<EOP

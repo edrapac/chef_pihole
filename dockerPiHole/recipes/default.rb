@@ -19,8 +19,8 @@ end
 bash 'pip_install_docker_compose' do
   code <<-EOH
     sudo -H pip3 -v install --no-cache-dir docker-compose 
-   	EOH
-   	not_if { ::File.exist?('/usr/local/bin/docker-compose') }
+    EOH
+    not_if { ::File.exist?('/usr/local/bin/docker-compose') }
 end
 
 # Clone the PiHole docker repo
@@ -44,7 +44,7 @@ end
 bash 'modify_bashrc' do
   code <<-EOH
     sudo cp ~/.bashrc ~/.bashrc.bak
-    sudo curl https://gist.githubusercontent.com/rickdaalhuizen90/d1df7f6042494b982db559efc01d9557/raw/488d28c1b614617025b6dc9d8da1075eedb892d4/.bashrc > /home/pi/.bashrc
+    curl https://gist.githubusercontent.com/rickdaalhuizen90/d1df7f6042494b982db559efc01d9557/raw/488d28c1b614617025b6dc9d8da1075eedb892d4/.bashrc > /home/pi/.bashrc
     echo 'Rebooting for bash rc changes to take effect' && sudo reboot
     EOH
 end
